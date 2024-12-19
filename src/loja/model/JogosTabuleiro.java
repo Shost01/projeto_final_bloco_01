@@ -13,8 +13,6 @@ public class JogosTabuleiro extends Jogos {
 		return duracao;
 	}
 
-
-
 	public void setDuracao(String duracao) {
 		this.duracao = duracao;
 	}

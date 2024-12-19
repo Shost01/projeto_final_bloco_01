@@ -12,13 +12,9 @@ public class JogosVideoGame extends Jogos {
 		return plataforma;
 	}
 
-
-
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
 	}
-
-
 
 	@Override
 	public void visualizar() {
