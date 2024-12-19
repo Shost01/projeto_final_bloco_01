@@ -3,6 +3,9 @@ package projeto_final_bloco_01;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import loja.model.JogosPlaystation;
+import loja.model.JogosXbox;
 import loja.util.Cores;
 
 public class Menu {
@@ -14,11 +17,16 @@ public class Menu {
 		int opcao, tipo, genero;
 		String jogo;
 	
+		JogosXbox jx = new JogosXbox(1, 2, "Forza", "Séries X e S");
+	    jx.visualizar();
+	    
+		JogosPlaystation jp = new JogosPlaystation(1, 2, "Spider-Man", 5);
+	    jp.visualizar();
 
 		while (true) {
 
 			System.out.println(Cores.TEXT_BLUE + Cores.ANSI_BLACK_BACKGROUND
-					+ "*****************************************************");
+					+ "**************************************************************");
 			System.out.println("                                                     ");
 			System.out.println("                THE LEGEND OF GAMES                  ");
 			System.out.println("                                                     ");
@@ -26,7 +34,7 @@ public class Menu {
 			System.out.println("                                                     ");
 			System.out.println("            1 - Adicionar Jogo                       ");
 			System.out.println("            2 - Listar Todos os Jogos                ");
-			System.out.println("            3 - Buscar Jogo por Tipo                 ");
+			System.out.println("            3 - Buscar Jogo por Tipo (PS -1, Xbox-2) ");
 			System.out.println("            4 - Atualizar Lista de Jogos             ");
 			System.out.println("            5 - excluir Jogo                         ");
 			System.out.println("            6 - Sair                                 ");
