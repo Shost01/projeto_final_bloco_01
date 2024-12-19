@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import loja.model.JogosPlaystation;
-import loja.model.JogosXbox;
+
+import loja.model.JogosTabuleiro;
+import loja.model.JogosVideoGame;
 import loja.util.Cores;
 
 public class Menu {
@@ -17,11 +18,11 @@ public class Menu {
 		int opcao, tipo, genero;
 		String jogo;
 	
-		JogosXbox jx = new JogosXbox(1, 2, "Forza", "Séries X e S");
-	    jx.visualizar();
+		JogosTabuleiro jT = new JogosTabuleiro(1, 2, "Dungeons & Dragons", "Alta");
+	    jT.visualizar();
 	    
-		JogosPlaystation jp = new JogosPlaystation(1, 2, "Spider-Man", 5);
-	    jp.visualizar();
+		JogosVideoGame jV = new JogosVideoGame(1, 2, "Spider-Man", "PS5 e PS4");
+	    jV.visualizar();
 
 		while (true) {
 

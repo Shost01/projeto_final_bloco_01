@@ -3,12 +3,13 @@ package loja.model;
 public abstract class Jogos {
 	private int id;
 	private int tipo;
-	private String jogo;
+	private String nome;
 	
-	public Jogos(int id, int tipo, String jogo) {
+	public Jogos(int id, int tipo, String nome) {
 		this.id = id;
 		this.tipo = tipo;
-		this.jogo = jogo;
+		this.nome = nome;
+
 	}
 
 	public int getId() {
@@ -27,12 +28,12 @@ public abstract class Jogos {
 		this.tipo = tipo;
 	}
 
-	public String getJogo() {
-		return jogo;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setJogo(String jogo) {
-		this.jogo = jogo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public void visualizar() {
@@ -41,10 +42,10 @@ public abstract class Jogos {
 		
 		switch (this.tipo) {
 		case 1:
-			tipo = "Playstation";
+			tipo = "Video Game";
 			break;
 		case 2:
-			tipo = "Xbox";
+			tipo = "Tabuleiro";
 			break;
 		}
 		
@@ -53,7 +54,8 @@ public abstract class Jogos {
 		System.out.println("***********************************************************");
 		System.out.println("Id do jogo: " + this.id);
 		System.out.println("Tipo do jogo: " + tipo);
-		System.out.println("Jogo: " + this.jogo);
+		System.out.println("Jogo: " + this.nome);
+	
 	}
 	
 	
