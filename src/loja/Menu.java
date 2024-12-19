@@ -1,10 +1,10 @@
-package projeto_final_bloco_01;
+package loja;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import jogos.controller.JogosController;
+import loja.controller.JogosController;
 import loja.model.JogosTabuleiro;
 import loja.model.JogosVideoGame;
 import loja.util.Cores;

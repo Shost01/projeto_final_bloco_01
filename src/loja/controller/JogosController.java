@@ -1,4 +1,4 @@
-package jogos.controller;
+package loja.controller;
 
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class JogosController implements JogosRepository {
 				System.out.println("\nO Jogo: " + jogo.getNome() + " foi deletado com sucesso");
 		}
 		else {
-			System.out.println("\nO Jogo: " + jogo.getNome() + " não foi encontrado!");
+			System.out.println("\nO jogo com o ID " + id + " não foi encontrado!");
 		}
 		
 	}
