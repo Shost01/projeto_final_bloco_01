@@ -1,8 +1,10 @@
 package loja.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import loja.model.Jogos;
+import loja.model.JogosVideoGame;
 import loja.repository.JogosRepository;
 
 public class JogosController implements JogosRepository {
@@ -65,6 +67,33 @@ public class JogosController implements JogosRepository {
 		
 	}
 	
+	@Override
+	public void buscarPorGenero(int genero) {
+	   
+	    var jogosEncontrados = buscaGenero(genero); 
+
+	    if (!jogosEncontrados.isEmpty()) {
+	        System.out.println("\nJogos encontrados com o gênero " + genero + ":");
+	        for (Jogos jogo : jogosEncontrados) {
+	            jogo.visualizar();
+	        }
+	    } else {
+	        System.out.println("\nNenhum jogo com o gênero " + genero + " foi encontrado!");
+	    }
+	}
+	
+	public List<Jogos> buscaGenero(int genero) {
+	    List<Jogos> jogosDoGenero = new ArrayList<>();
+	    for (Jogos jogo : listaJogos) {
+	        if (jogo.getGenero() == genero) {
+	            jogosDoGenero.add(jogo);
+	        }
+	    }
+	    return jogosDoGenero;
+	}
+	
+
+	
 	public int geraId() {
 		return ++ id;
 	}
@@ -86,4 +115,6 @@ public class JogosController implements JogosRepository {
 	    }
 	    return null;
 	}
+
 }
+

@@ -17,16 +17,15 @@ public class Menu {
 
 		JogosController jogos = new JogosController();
 		
-		int opcao, tipo, id;
+		int opcao, tipo, id, genero = 0;
 		String nome, plataforma, duracao;
-	
-		
+		JogosVideoGame gen = new JogosVideoGame(0, 0, 0, "", "");
 
-		JogosTabuleiro jT = new JogosTabuleiro(jogos.geraId(), 2, "Dungeons & Dragons", "Longa");
-	    jogos.cadastrar(jT);;
+		JogosTabuleiro jt = new JogosTabuleiro(jogos.geraId(), 2, 1, "Dungeons & Dragons", "Longa");
+	    jogos.cadastrar(jt);;
 	    
-		JogosVideoGame jV = new JogosVideoGame(jogos.geraId(), 1, "Spider-Man", "PS5 e PS4");
-	    jogos.cadastrar(jV);
+		JogosVideoGame jv = new JogosVideoGame(jogos.geraId(), 1, 5, "Spider-Man", "PS5 e PS4");
+	    jogos.cadastrar(jv);
 
 		while (true) {
 
@@ -40,9 +39,10 @@ public class Menu {
 			System.out.println("            1 - Adicionar Jogo                       ");
 			System.out.println("            2 - Listar Todos os Jogos                ");
 			System.out.println("            3 - Buscar Jogo por ID (PS -1, Xbox-2)   ");
-			System.out.println("            4 - Atualizar Lista de Jogos             ");
-			System.out.println("            5 - excluir Jogo                         ");
-			System.out.println("            6 - Sair                                 ");
+			System.out.println("            4   Buscar por gênero                    ");
+			System.out.println("            5 - Atualizar Lista de Jogos             ");
+			System.out.println("            6 - excluir Jogo                         ");
+			System.out.println("            7 - Sair                                 ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
@@ -55,7 +55,7 @@ public class Menu {
 				leia.nextLine();
 				opcao = 0;
 			}
-			if (opcao == 6) {
+			if (opcao == 7) {
 				System.out.println(Cores.TEXT_WHITE_BOLD + "\nTHE LEGEND OF GAMES - O mundo das Lendas!! ");
 
 				leia.close();
@@ -69,6 +69,11 @@ public class Menu {
 				System.out.println("Digite o nome do Jogo:");
 				leia.skip("\\R?");
 				nome = leia.nextLine();
+				
+				System.out.println("Qual o Gênero do jogo? ");
+				gen.generos(); // 
+				System.out.println("Digite o Gênero? ");
+				genero = leia.nextInt();
 
 				do {
 					System.out.println("Digite o Tipo do Jogo (1-Video Game ou 2-Tabuleiro): ");
@@ -81,13 +86,13 @@ public class Menu {
 					System.out.println("Digite a Plataforma: ");
 					leia.nextLine();
 					plataforma = leia.nextLine();
-					jogos.cadastrar(new JogosVideoGame(jogos.geraId(), tipo, nome, plataforma));
+					jogos.cadastrar(new JogosVideoGame(jogos.geraId(), tipo, genero, nome, plataforma));
 				}
 				case 2 -> {
 					System.out.println("Digite a Duração do jogo (Curta, Média, Longa): ");
 					leia.nextLine();
 					duracao = leia.nextLine();
-					jogos.cadastrar(new JogosTabuleiro(jogos.geraId(), tipo, nome, duracao));						
+					jogos.cadastrar(new JogosTabuleiro(jogos.geraId(), tipo, genero, nome, duracao));						
 				}
 				}
 
@@ -110,6 +115,17 @@ public class Menu {
 				KeyPress();
 				break;
 			case 4:
+				System.out.println(Cores.TEXT_WHITE + "Buscar Jogo por Gênero\n\n");
+				
+				gen.generos();
+				System.out.println("Digite o Gênero: ");
+				genero = leia.nextInt();
+				
+				jogos.buscarPorGenero(genero);
+				
+				KeyPress();
+				break;
+			case 5:
 				System.out.println(Cores.TEXT_WHITE + "Atualizar lista de Jogos\n\n");
 
 				System.out.println("Digite o id do Jogo: ");
@@ -126,23 +142,18 @@ public class Menu {
 					nome = leia.nextLine();
 
 					switch (tipo) {
-						case 1 -> {
-							System.out.println(" Digite a Plataforma: ");
-							plataforma = leia.nextLine();
-						
-							jogos.atualizar(new JogosVideoGame(id, tipo, nome, plataforma));
-
-						}
-						case 2 -> {
-							System.out.println("Digite a Duração do jogo (Curta, Média, Longa): ");
-							duracao = leia.nextLine();
-
-							jogos.atualizar(new JogosTabuleiro(jogos.geraId(), tipo, nome, duracao));	
-						}
-						default -> {
-							System.out.println("Jogo inválido!");
-						}
-					}
+				    case 1 -> {
+				        System.out.println("Digite a Plataforma: ");
+				        plataforma = leia.nextLine();
+				        jogos.cadastrar(new JogosVideoGame(jogos.geraId(), tipo, genero, nome, plataforma));
+				    }
+				    case 2 -> {
+				        System.out.println("Digite a Duração do jogo (Curta, Média, Longa): ");
+				        leia.nextLine();
+				        duracao = leia.nextLine();
+				        jogos.cadastrar(new JogosTabuleiro(jogos.geraId(), tipo, genero, nome, duracao));						
+				    }
+				}
 				}
 				else {
 					System.out.println("O Jogo não foi encontrado!");
@@ -150,7 +161,7 @@ public class Menu {
 				
 				KeyPress();
 				break;
-			case 5:
+			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Excluir jogo\n\n");
 
 				System.out.println("Digite o ID do Jogo: ");

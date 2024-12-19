@@ -3,8 +3,8 @@ package loja.model;
 public class JogosVideoGame extends Jogos {
 	private String plataforma;
 	
-	public JogosVideoGame (int id, int tipo, String nome, String plataforma) {
-		super(id, tipo, nome);
+	public JogosVideoGame (int id, int tipo,int genero, String nome, String plataforma) {
+		super(id, tipo, genero, nome);
 		this.plataforma = plataforma;	
 	}
 
@@ -19,7 +19,7 @@ public class JogosVideoGame extends Jogos {
 	@Override
 	public void visualizar() {
 		super.visualizar();
-		System.out.println("Plataforma: " + this.plataforma);
+		System.out.println("Plataforma: " + ((JogosVideoGame) this).getPlataforma());  
 	}
 	
 }
